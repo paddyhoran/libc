@@ -163,8 +163,8 @@ pub const STRUNCATE: ::c_int = 80;
 #[link(name = "msvcrt", cfg(not(target_feature = "crt-static")))]
 #[link(name = "libcmt", cfg(target_feature = "crt-static"))]
 extern {
-    fn _aligned_malloc(size: libc::size_t, alignment: libc::size_t) -> libc::size_t;
-    fn _aligned_free(prt: *const u8);
+    pub fn _aligned_malloc(size: libc::size_t, alignment: libc::size_t) -> libc::size_t;
+    pub fn _aligned_free(prt: *const u8);
 }
 
 extern {
