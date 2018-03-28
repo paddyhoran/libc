@@ -162,7 +162,10 @@ pub const STRUNCATE: ::c_int = 80;
 #[cfg(all(target_env = "msvc", feature = "stdbuild"))] // " if "
 #[link(name = "msvcrt", cfg(not(target_feature = "crt-static")))]
 #[link(name = "libcmt", cfg(target_feature = "crt-static"))]
-extern {}
+extern {
+    fn _aligned_malloc(size: libc::size_t, alignment: libc::size_t) -> libc::size_t;
+    fn _aligned_free(prt: *const u8);
+}
 
 extern {
     #[link_name = "_chmod"]
